@@ -4,6 +4,8 @@
 package ca.footeware.converter.temperature;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -32,6 +34,12 @@ public class TemperaturePanel extends ConverterPanel {
 	 */
 	public Composite getPanel(Composite parent) {
 		Composite panel = new Composite(parent, SWT.NONE);
+		panel.addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent arg0) {
+				dispose();
+			}
+		});
 
 		panel.setLayout(new GridLayout(5, false));
 		fText = new Text(panel, SWT.BORDER);

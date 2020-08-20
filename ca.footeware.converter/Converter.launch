@@ -12,5 +12,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="ca.footeware.converter"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ca.footeware.converter"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="--module-path ca.footeware.converter:ca.footeware.converter.temperature:/home/craig/Downloads/swt.jar -m ca.footeware.converter/ca.footeware.converter.Converter"/>
-    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc}"/>
+    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="/home/craig/git/ca.footeware.converter"/>
 </launchConfiguration>
