@@ -8,7 +8,10 @@
     </listAttribute>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
+    <listAttribute key="org.eclipse.jdt.launching.CLASSPATH"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ca.footeware.converter.Converter"/>
+    <listAttribute key="org.eclipse.jdt.launching.MODULEPATH"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="ca.footeware.converter"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ca.footeware.converter"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="--module-path ca.footeware.converter:ca.footeware.converter.temperature:/home/craig/Downloads/swt.jar -m ca.footeware.converter/ca.footeware.converter.Converter"/>
