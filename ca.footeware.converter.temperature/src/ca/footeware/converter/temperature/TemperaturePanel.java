@@ -6,12 +6,11 @@ package ca.footeware.converter.temperature;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -26,6 +25,8 @@ public class TemperaturePanel extends ConverterPanel {
 
 	private Text cText;
 	private Text fText;
+	private ModifyListener fListener;
+	private ModifyListener cListener;
 
 	/**
 	 * Constructor
@@ -41,23 +42,16 @@ public class TemperaturePanel extends ConverterPanel {
 			}
 		});
 
-		panel.setLayout(new GridLayout(5, false));
+		GridLayout gridLayout = new GridLayout(2, false);
+		gridLayout.marginWidth = 50;
+		panel.setLayout(gridLayout);
 		fText = new Text(panel, SWT.BORDER);
-		GridData gd = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 2);
+		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		fText.setLayoutData(gd);
-		gd.widthHint = 200;
-		Label fLabel = new Label(panel, SWT.NONE);
-		fLabel.setText("\u00B0" + "F");
-		gd = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 2);
-		fLabel.setLayoutData(gd);
-
-		Button button = new Button(panel, SWT.PUSH);
-		button.setText("To Celsius ->");
-		gd = new GridData(SWT.FILL, SWT.FILL, true, false);
-		button.setLayoutData(gd);
-		button.addSelectionListener(new SelectionAdapter() {
+		
+		fListener = new ModifyListener() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void modifyText(ModifyEvent arg0) {
 				String text = fText.getText();
 				if (text.isBlank()) {
 					return;
@@ -69,26 +63,25 @@ public class TemperaturePanel extends ConverterPanel {
 					return;
 				}
 				double c = f * 1.8 + 32;
+				cText.removeModifyListener(cListener);
 				cText.setText(String.valueOf(c));
+				cText.addModifyListener(cListener);
 			}
-		});
+		};
+		
+		fText.addModifyListener(fListener);
 
+		Label fLabel = new Label(panel, SWT.NONE);
+		fLabel.setText("\u00B0" + "F"); // degrees code
+		gd = new GridData(SWT.LEFT, SWT.CENTER, false, false);
+		fLabel.setLayoutData(gd);
+		
 		cText = new Text(panel, SWT.BORDER);
-		gd = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 2);
+		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		cText.setLayoutData(gd);
-		gd.widthHint = 200;
-		Label cLabel = new Label(panel, SWT.NONE);
-		cLabel.setText("\u00B0" + "C");
-		gd = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 2);
-		cLabel.setLayoutData(gd);
-
-		button = new Button(panel, SWT.PUSH);
-		button.setText("<- To Fahrenheit");
-		gd = new GridData(SWT.FILL, SWT.FILL, true, false);
-		button.setLayoutData(gd);
-		button.addSelectionListener(new SelectionAdapter() {
+		cListener = new ModifyListener() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void modifyText(ModifyEvent arg0) {
 				String text = cText.getText();
 				if (text.isBlank()) {
 					return;
@@ -100,9 +93,19 @@ public class TemperaturePanel extends ConverterPanel {
 					return;
 				}
 				double f = (c - 32) / 1.8;
+				fText.removeModifyListener(fListener);
 				fText.setText(String.valueOf(f));
+				fText.addModifyListener(fListener);
 			}
-		});
+		};
+		
+		cText.addModifyListener(cListener);
+
+		Label cLabel = new Label(panel, SWT.NONE);
+		cLabel.setText("\u00B0" + "C");
+		gd = new GridData(SWT.LEFT, SWT.CENTER, false, false);
+		cLabel.setLayoutData(gd);
+
 		return panel;
 	}
 
