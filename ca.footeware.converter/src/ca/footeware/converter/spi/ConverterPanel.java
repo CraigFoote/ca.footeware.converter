@@ -1,10 +1,11 @@
 /**
- * 
+ *
  */
 package ca.footeware.converter.spi;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -20,21 +21,21 @@ public abstract class ConverterPanel {
 
 	/**
 	 * Get the label identifying the tabPanel.
-	 * 
+	 *
 	 * @return {@link String}
 	 */
 	public abstract String getLabel();
 
 	/**
 	 * Get the icon image for this tab's composite.
-	 * 
+	 *
 	 * @return {@link Image}
 	 */
 	public abstract Image getImage();
 
 	/**
 	 * Get the panel laying out the controls for the tab.
-	 * 
+	 *
 	 * @return parent {@link Composite}
 	 */
 	public abstract Composite getPanel(Composite parent);
@@ -42,7 +43,7 @@ public abstract class ConverterPanel {
 	/**
 	 * Get the image at provided path. Store in a list so that it can be disposed of
 	 * properly.
-	 * 
+	 *
 	 * @param path {@link String}
 	 * @return {@link Image}
 	 */
@@ -56,11 +57,11 @@ public abstract class ConverterPanel {
 	}
 
 	public void dispose() {
-		for (String path : images.keySet()) {
-			Image image = images.get(path);
+		for (Entry<String, Image> entry : images.entrySet()) {
+			Image image = images.get(entry.getKey());
 			if (image != null && !image.isDisposed()) {
 				image.dispose();
 			}
 		}
-	};
+	}
 }
