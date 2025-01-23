@@ -7,7 +7,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/swt-4.33-gtk-linux-x86_64.zip_expanded">
+	<classpathentry kind="lib" path="/home/craig/Downloads/swt.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

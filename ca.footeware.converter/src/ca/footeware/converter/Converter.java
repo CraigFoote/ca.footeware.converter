@@ -32,11 +32,12 @@ public class Converter {
 	 * @param args {@link String}[]
 	 */
 	public static void main(String[] args) {
+		Display.setAppName("ca.footeware.converter");
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.setText("Footeware Converter");
 		shell.setSize(800, 600);
-		shell.addDisposeListener(e -> {
+		shell.addDisposeListener(_ -> {
 			if (icon != null && !icon.isDisposed()) {
 				icon.dispose();
 			}

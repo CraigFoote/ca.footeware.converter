@@ -57,7 +57,7 @@ public class LengthPanel extends ConverterPanel {
 
 		Composite panel = new Composite(scrolledComposite, SWT.NONE);
 		scrolledComposite.setContent(panel);
-		panel.addDisposeListener(arg0 -> dispose());
+		panel.addDisposeListener(_ -> dispose());
 
 		GridLayout gridLayout = new GridLayout(2, false);
 		gridLayout.marginWidth = 20;

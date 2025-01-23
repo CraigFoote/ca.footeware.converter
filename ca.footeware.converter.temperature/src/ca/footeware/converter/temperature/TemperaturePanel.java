@@ -37,7 +37,7 @@ public class TemperaturePanel extends ConverterPanel {
 
 		Composite panel = new Composite(scrolledComposite, SWT.NONE);
 		scrolledComposite.setContent(panel);
-		panel.addDisposeListener(arg0 -> dispose());
+		panel.addDisposeListener(_ -> dispose());
 
 		GridLayout gridLayout = new GridLayout(2, false);
 		gridLayout.marginWidth = 20;
@@ -49,7 +49,7 @@ public class TemperaturePanel extends ConverterPanel {
 		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		fText.setLayoutData(gd);
 
-		ModifyListener fListener = arg0 -> {
+		ModifyListener fListener = _ -> {
 			String text = fText.getText();
 			if (text.isBlank()) {
 				return;
@@ -76,7 +76,7 @@ public class TemperaturePanel extends ConverterPanel {
 		cText = new Text(panel, SWT.BORDER);
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		cText.setLayoutData(gd);
-		cListener = arg0 -> {
+		cListener = _ -> {
 			String text = cText.getText();
 			if (text.isBlank()) {
 				return;
